@@ -6,7 +6,7 @@ A full-stack Ecommerce Web Application built using Django.
 This project includes product listing, cart system, user authentication, and order management.
 
 🚀 Live Project
-👉 (Optional: add later when deployed)
+👉 (add later when deployed)
 
 🧑‍💻 Tech Stack
 Python 🐍
