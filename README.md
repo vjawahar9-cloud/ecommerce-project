@@ -38,7 +38,7 @@ miniecommerce/
 
 ⚙️ Installation & Setup
 # 1. Clone repo
-git clone https://github.com/your-username/ecommerce-project.git
+git clone https://github.com/vjawahar9-cloud/ecommerce-project.git
 
 # 2. Move into project
 cd ecommerce-project
