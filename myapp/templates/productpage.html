@@ -1,0 +1,141 @@
+{% extends 'navpage.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #1d2124;
+    }
+
+    /* Carousel images */
+    .carousel img {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* Card */
+    .product-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Image */
+    .product-img {
+        height: 500px;
+        object-fit: cover;
+    }
+
+    /* Title */
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    /* Price */
+    .price {
+        color: #28a745;
+        font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn-custom {
+        border-radius: 8px;
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .btn-view {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-cart {
+        background: #343a40;
+        color: white;
+    }
+
+    .btn-view:hover {
+        background: #0056b3;
+    }
+
+    .btn-cart:hover {
+        background: #1d2124;
+    }
+
+    /* Chatbot styling */
+    df-messenger {
+        --df-messenger-bot-message: #f1f0f0;
+        --df-messenger-button-titlebar-color: orange;
+        --df-messenger-font-color: #000;
+        --df-messenger-send-icon: #fff;
+        --df-messenger-user-message: #dcf8c6;
+    }
+</style>
+
+<!-- CAROUSEL -->
+<div id="carouselExampleIndicators" class="carousel slide mt-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/img23.jpg' %}" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/img24.jpg' %}" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/img25.jpg' %}" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/img11.jpg' %}" class="d-block w-100">
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="container mt-5">
+    <div class="row">
+        {% for i in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card product-card h-100 shadow-sm">
+                <a href="{% url 'productdetail' i.id %}">
+                    {% if i.image %}
+                    <img src="{{ i.image.url }}" class="card-img-top product-img">
+                    {% endif %}
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="price">₹ {{ i.price }}</p>
+                </div>
+                <div class="card-footer text-center bg-white border-0">
+                    <a href="{% url 'productdetail' i.id %}" class="btn btn-custom btn-view me-2">
+                        View /Buy 
+                    </a>
+                    <a href="{% url 'add_to_cart' i.id %}" class="btn btn-custom btn-cart">
+                        Add to cart
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- DIALOGFLOW CHATBOT -->
+<df-messenger
+  chat-title="MyShopBot"
+  agent-id="224ffc10-14ca-4856-adf0-58811f6826b1"
+  language-code="en"
+  intent="WELCOME"
+></df-messenger>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+{% endblock %}

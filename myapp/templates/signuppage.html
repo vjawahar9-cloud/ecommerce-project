@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <style>
+      body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: whitesmoke
+      }
+
+      .formst{
+        width: 450px;
+        margin: 100px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+      }
+
+      h3{
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .div{
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .divlabel{
+        width: 180px;
+        font-weight: bold;
+      }
+
+      input{
+        flex: 1;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .btn{
+        display: flex;
+        justify-content:center ;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      #int{
+        width: 25%;
+        padding: 6px;
+        font-size: 13px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+
+      input[type="submit"] {
+        background: green;
+
+      }   
+
+      input[type="reset"] {
+         background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="formst">
+      <form action="{% url 'signupprocess' %}" method="POST">
+
+        {% csrf_token %}
+        
+        <h3>Signup</h3>
+
+
+      <div class="div">
+        <label class="divlabel">Username</label>
+        <input type="text" name="username" required>
+     </div>
+
+       
+      <div class="div">
+        <label class="divlabel">Email</label>
+        <input type="text" name="email" required>
+      </div>
+
+
+      <div class="div">
+        <label class="divlabel">Create Password</label>
+        <input type="password" name="password" required>
+      </div>
+
+      <div class="div">
+        <label class="divlabel">Re-type Password</label>
+        <input type="text" name="repassword" required>
+      </div>
+
+       
+      <div class="div">
+        <label class="divlabel">Address</label>
+        <input type="text" name="address" required>
+      </div>
+
+      <div class="div">
+        <label class="divlabel">Mobile Number</label>
+        <input type="text" name="mobile" required>
+      </div>
+
+
+      <div class="div">
+        <label class="divlabel">Alternate Mobile Number</label>
+        <input type="tel" name="altmobile" required>
+      </div>
+
+      <div class="btn">
+        <input type="submit" value="Signup" id="int">
+        <input type="reset" value="Cancel" id="int">
+      </div>
+
+
+
+
+      </form>
+      
+    
+    </div>
+
+    
+  </body>
+</html>

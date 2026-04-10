@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <style>
+      body{
+        background: white;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .formst{
+        background: whitesmoke;
+        padding: 40px;
+        border-radius: 15px;
+        width: 350px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+
+      .formst h3{
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: bold;
+      }
+
+      .div{
+        margin-bottom: 20px;
+      }
+
+      .divlabel{
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        font-weight: 500;
+      }
+
+      .div input{
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      .div input:focus{
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102,126,234,0.5);
+      }
+
+      .btn{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      #int{
+        width: 48%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #667eea;
+        color: white;
+        transition: 0.3s;
+      }
+
+      #int:hover{
+        background: #5a67d8;
+      }
+
+      input[type="reset"]{
+      background: #dc3545;
+    }
+
+    input[type="reset"]:hover{
+      background: #c82333;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="formst">
+      <form action="{% url 'adminprocess' %}" method="POST">
+        {% csrf_token %}
+
+         {% if error %}
+         <p style="color:red; text-align:center;">{{ error }}</p>
+         {% endif %}
+
+
+
+        <h3>Login</h3>
+
+      <div class="div">
+        <label class="divlabel">Email or Mobile Number</label>
+        <input type="text" name="mobile" required>
+      </div>
+
+      <div class="div">
+        <label class="divlabel">Password</label>
+        <input type="password" name="password" required>
+      </div>
+
+      <div class="btn">
+        <input type="submit" value="Login" id="int">
+        <input type="reset" value="Cancel" id="int">
+      </div>
+
+
+
+
+      </form>
+      
+    
+    </div>
+
+    
+
+
+   
+  </body>
+</html>

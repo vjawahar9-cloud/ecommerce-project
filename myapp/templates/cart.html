@@ -1,0 +1,111 @@
+ {% extends 'navpage.html' %}
+
+{% block content %}
+
+<style>
+    .cart-container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .cart-title {
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .cart-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .cart-card:hover {
+        transform: scale(1.02);
+    }
+
+    .price {
+        font-weight: 500;
+        color: #28a745;
+    }
+
+    .quantity {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .empty-cart {
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+        margin-top: 50px;
+    }
+
+    .place-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        border: none;
+        transition: 0.3s;
+    }
+
+    .place-btn:hover {
+        transform: scale(1.03);
+        background: linear-gradient(45deg, #0056b3, #0096c7);
+    }
+    
+    
+</style>
+
+<div class="container mt-5 cart-container">
+
+    <h2 class="cart-title">Your Cart 🛒</h2>
+
+    {% for i in items %}
+        <div class="card mb-3 p-3 cart-card d-flex justify-content-between align-items-center">
+
+
+            <div>
+                <img src="{{ i.product.image.url}}" 
+                style="width:100px; height:180px; object-fit:cover; border-radius:6px;">
+                <h5 class="mb-1">{{ i.product.name }}</h5>
+                <p class="price mb-1">Price: ₹ {{ i.product.price }}</p>
+                <p class="quantity mb-0">Quantity: {{ i.quantity }}</p>
+            </div>
+            <div>
+                <!-- Remove button -->
+                <a href="{% url 'toggle_cart' i.product.id %}" class="btn btn-danger">
+                    Remove
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <p class="empty-cart">Your cart is empty 😢</p>
+    {% endfor %}
+
+</div>
+
+
+
+    {% if items %}
+    <form action="/payment/" method="POST">
+        {% csrf_token %}
+        <button class="btn place-btn mt-3">Place Order 🚀</button>
+        
+    </form>
+    {% endif %}
+
+    {% for item in cart_items %}
+  
+{% endfor %}
+
+    
+
+
+
+
+</div>
+
+{% endblock %}

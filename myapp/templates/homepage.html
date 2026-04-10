@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Rare Rabbit</title>
+    {% load static %}
+
+    <style>
+      .carousel-item {
+        object-fit: cover;
+        object-position: top;
+        height: 100vh;
+        overflow: hidden;
+      }
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: rgba(0,0,0,0.4);
+        
+        
+      }
+
+      .hero{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 2;
+      }
+
+      .hero h1{
+        font-size: 50px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+        font-weight: bold;
+      }
+
+      .hero p{
+        font-size: 18px;
+        margin-bottom: 60px;
+        color:beige
+      }
+
+      .btn1{
+        padding: 12px 30px;
+        background: #667eea;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+        font-weight: bold;
+      }
+
+      .btn1:hover{
+        background: #5a67d8;
+        transform: scale(1.05);
+      }
+
+      .top-buttons{
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        z-index: 3;
+
+        display: flex;
+        gap: 20px;
+        
+        
+      }
+
+      .top-buttons a{
+        border: radius 2Opx;
+        text-decoration: none;
+        color: gainsboro
+        
+      }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="top-buttons">
+      <a href="/login" class="btn2">Login</a>
+      <a href="/signup" class="btn3">Signup</a>
+    </div>
+
+    
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    
+
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/img18.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/img11.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/img22.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<div class="overlay"></div>
+
+<div class="hero">
+  <h1> Rare Rabbit</h1>
+  <p>Find Everything You Love at Rare Rabbit</p>
+  <a href="/products/" class="btn1">Get Started</a>  
+</div>
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
